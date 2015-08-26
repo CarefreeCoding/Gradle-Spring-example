@@ -1,0 +1,37 @@
+// we will use java for compiling and such
+apply plugin: 'java'
+// we are using idea IDE
+apply plugin: 'idea'
+// we are using spring for rest api
+apply plugin: 'spring-boot'
+// we will use jetty to run this project
+apply plugin: 'jetty'
+
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+// the libraries used go here
+dependencies {
+    compile 'org.springframework:spring-core:4.1.2.RELEASE',
+            'org.springframework:spring-web:4.1.2.RELEASE',
+            'org.springframework:spring-webmvc:4.1.2.RELEASE'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+}
+
